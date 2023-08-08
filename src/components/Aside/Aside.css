@@ -1,0 +1,47 @@
+.aside {
+  width: 280px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--red);
+  color: var(--black-light);
+  padding:70px 0 ;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -8;
+}
+.aside .wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.aside .link {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: var(--black-light);
+  padding: 0 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.aside .link:hover,
+.aside .link:focus {
+  color: var(--blueViolet);
+  background-color: var(--lightBlueviolet);
+}
+
+.aside ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+
+
+
+  
