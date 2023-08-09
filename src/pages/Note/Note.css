@@ -4,18 +4,31 @@
   padding: 70px 0 40px 300px;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 .note .add-note{
  
   width: 600px;
-  height: 46px;
+  min-height: 46px;
   box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
   margin-top: 64px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   padding: 0 16px;
   cursor: pointer;
+}
+.note .add-note input{
+  height: 44px;
+  padding: 0 16px;
+  border: none;
+  outline: none;
+}
+.note .add-note input[type='color'],.note .add-note label{
+ background-color: transparent;
+ cursor: pointer;
 }
 .note .info-note{
 position: absolute;
@@ -30,4 +43,17 @@ text-align: center;
 }
 .note .info-note .bulb-note{
   color: var(--grey-light);
+}
+.note .panel{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+.note .panel .row{
+  background-color: var(--grey-light-super);
+}
+.note .panel button{
+  cursor: pointer;
+  background-color: var(--grey-light-super);
+  border: none;
 }
