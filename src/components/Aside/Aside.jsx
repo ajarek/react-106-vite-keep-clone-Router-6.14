@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-
+import { BiBulb, BiBell, BiPencil, BiArchiveIn } from 'react-icons/bi'
+import { RiDeleteBinLine } from 'react-icons/ri'
 import './Aside.css'
 
 const Aside = () => {
@@ -7,16 +8,34 @@ const Aside = () => {
     <nav className='aside'>
       <ul className='wrapper'>
         <Link
-          className='link'
+          className='aside-link'
           to={'/'}
         >
-          Notatki
+          <BiBulb className='icons' size={25}/>Notatki
         </Link>
         <Link
-          className='link'
+          className='aside-link'
           to={'/'}
         >
-          Przypomnienia
+          <BiBell className='icons' size={25}/> Przypomnienia
+        </Link>
+        <Link
+          className='aside-link'
+          to={'/'}
+        >
+          <BiPencil className='icons' size={25}/>Edytuj etykiety
+        </Link>
+        <Link
+          className='aside-link'
+          to={'/archiwum'}
+        >
+         <BiArchiveIn className='icons' size={25}/> Archiwum
+        </Link>
+        <Link
+          className='aside-link'
+          to={'/'}
+        >
+         <RiDeleteBinLine className='icons' size={25}/>Kosz
         </Link>
       </ul>
     </nav>

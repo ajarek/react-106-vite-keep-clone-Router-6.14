@@ -3,7 +3,8 @@ import { createContext, useState } from 'react'
 export const AppContext = createContext()
 
 import Main from './layouts/Main/Main'
-import Home from './pages/Home/Home'
+import Note from './pages/Note/Note'
+import Archive from './pages/Archive/Archive'
 import Error from './pages/Error/Error'
 
 const router = createBrowserRouter([
@@ -14,7 +15,12 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Note/>,
+        errorElement: <Error />,
+      },
+      {
+        path:'/archiwum',
+        element: <Archive/>,
         errorElement: <Error />,
       },
 

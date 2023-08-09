@@ -20,12 +20,12 @@ const Nav = () => {
       </Link>
 
       <ul className={!isOpen ? 'wrapper' : 'wrapper navbar-none'}>
-        <Link
+        {/* <Link
           className='link link-text'
           to={'/'}
         >
           Home
-        </Link>
+        </Link> */}
         
       </ul>
       <div className='hamburger'>
