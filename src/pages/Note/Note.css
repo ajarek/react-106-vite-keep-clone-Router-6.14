@@ -57,3 +57,26 @@ text-align: center;
   background-color: var(--grey-light-super);
   border: none;
 }
+.note .card{
+  padding: 16px;
+  width: 200px;
+  max-height: 300px;
+  
+}
+.note .card button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+.note .card button:hover::before{
+  content: 'kosz';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background-color: var(--black-light);
+  padding: 2px 8px;
+}

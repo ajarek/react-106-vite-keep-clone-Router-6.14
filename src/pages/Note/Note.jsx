@@ -1,10 +1,22 @@
-import { BiBulb, BiPalette, BiCommentAdd } from 'react-icons/bi'
-import { useState } from 'react'
+import { BiBulb, BiPalette, BiCommentAdd, BiWindowClose } from 'react-icons/bi'
+import { RiDeleteBinLine } from 'react-icons/ri'
+import { useState, useEffect } from 'react'
+import { saveStorage} from '../../helpers/localStorage'
 import './Note.css'
 
 const Note = () => {
   const [noteActive, setNoteActive] = useState(false)
-  const [receivedData, setReceivedData] = useState([{}])
+  const [receivedData, setReceivedData] = useState([])
+
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem("notes"));
+    if (storedTodos) {
+      setReceivedData(storedTodos);
+    }
+  }, []);
+  
+  
+
   const handleAddNote = () => {
     setNoteActive(true)
   }
@@ -15,17 +27,29 @@ const Note = () => {
       note: e.target[1].value,
       color: e.target[2].value,
     }
-    setReceivedData([...receivedData, newData])
-    e.target[0].value=''
-    e.target[1].value=''
-    e.target[2].value='#ffd52e'
+      setReceivedData([...receivedData, newData])
+    e.target[0].value = ''
+    e.target[1].value = ''
+    e.target[2].value = '#ffd52e'
+    saveStorage(newData, 'notes')
+  }
+  const handleClose = (e) => {
+    setNoteActive(false)
   }
   
+  const removeNote = (index) => {
+     const newNotes = [...receivedData];
+     
+    const filterNote=newNotes.filter((el,idx)=>idx!==index);
+   
+     setReceivedData(filterNote);
+     localStorage.setItem("notes", JSON.stringify(filterNote));
+  };
+
   return (
     <div className='note'>
       <form
         className='add-note'
-        onClick={handleAddNote}
         onSubmit={handleSubmit}
       >
         {noteActive && (
@@ -38,6 +62,7 @@ const Note = () => {
         <input
           type='text'
           placeholder='Utwórz notatkę...'
+          onClick={handleAddNote}
           required
         />
         {noteActive && (
@@ -55,19 +80,32 @@ const Note = () => {
             <button type='submit'>
               <BiCommentAdd size={40} />
             </button>
+            <button
+              type='button'
+              onClick={handleClose}
+              style={{ color: 'red' }}
+              className='close'
+            >
+              <BiWindowClose size={40} />
+            </button>
           </div>
         )}
       </form>
-      {noteActive ? 
+      {receivedData.length > 0 ? (
         receivedData.map((el, index) => {
-          return(
-            <div key={index} style={{background:el.color}}>
-              <h1>{el.title}</h1>
+          return (
+            <div
+              className='card'
+              key={index}
+              style={{ background: el.color }}
+            >
+              <h3>{el.title}</h3>
               <p>{el.note}</p>
+              <button onClick={()=>removeNote(index)}><RiDeleteBinLine size={30} color='red'/></button>
             </div>
           )
         })
-      : (
+      ) : (
         <div className='info-note'>
           <BiBulb
             size={120}
