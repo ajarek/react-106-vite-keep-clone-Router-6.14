@@ -75,6 +75,7 @@ text-align: center;
 
   button{
   position: relative;
+  cursor: pointer;
 }
   button:hover::before,  .row:hover::before{
   content: '';

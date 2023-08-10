@@ -1,7 +1,17 @@
-import { BiBulb, BiPalette, BiCommentAdd, BiWindowClose, BiArchiveIn } from 'react-icons/bi'
+import {
+  BiBulb,
+  BiPalette,
+  BiCommentAdd,
+  BiWindowClose,
+  BiArchiveIn,
+} from 'react-icons/bi'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { useState, useEffect } from 'react'
-import { saveStorage } from '../../helpers/localStorage'
+import {
+  saveStorage,
+  fetchStorage,
+  saveStorageSingle,
+} from '../../helpers/localStorage'
 import './Note.css'
 
 const Note = () => {
@@ -9,15 +19,16 @@ const Note = () => {
   const [receivedData, setReceivedData] = useState([])
 
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem('notes'))
-    if (storedTodos) {
-      setReceivedData(storedTodos)
+    const storedNotes = fetchStorage('notes')
+    if (storedNotes) {
+      setReceivedData(storedNotes)
     }
   }, [])
 
   const handleAddNote = () => {
     setNoteActive(true)
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const newData = {
@@ -31,17 +42,22 @@ const Note = () => {
     e.target[2].value = '#ffd52e'
     saveStorage(newData, 'notes')
   }
+
   const handleClose = (e) => {
     setNoteActive(false)
   }
 
   const removeNote = (index) => {
     const newNotes = [...receivedData]
-
     const filterNote = newNotes.filter((el, idx) => idx !== index)
-
     setReceivedData(filterNote)
-    localStorage.setItem('notes', JSON.stringify(filterNote))
+    saveStorageSingle(filterNote, 'notes')
+  }
+
+  const archiveNote = (index) => {
+    const newNotes = [...receivedData]
+    const archiveNote=newNotes.find((el,ind)=>ind===index)
+    saveStorage(archiveNote, 'archive')
   }
 
   return (
@@ -75,7 +91,10 @@ const Note = () => {
                 <BiPalette size={40} />
               </label>
             </div>
-            <button type='submit' className='add'>
+            <button
+              type='submit'
+              className='add'
+            >
               <BiCommentAdd size={40} />
             </button>
             <button
@@ -100,14 +119,19 @@ const Note = () => {
               >
                 <h3>{el.title}</h3>
                 <p>{el.note}</p>
-                <button onClick={() => removeNote(index)} className='remove-btn'>
+                <button
+                  onClick={() => removeNote(index)}
+                  className='remove-btn'
+                >
                   <RiDeleteBinLine
                     size={30}
                     color='red'
-                    
                   />
                 </button>
-                <button onClick={() => removeNote(index)} className='archive-btn'>
+                <button
+                  onClick={() => archiveNote(index)}
+                  className='archive-btn'
+                >
                   <BiArchiveIn
                     size={30}
                     color='green'
