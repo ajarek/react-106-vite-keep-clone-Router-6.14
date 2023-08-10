@@ -8,6 +8,14 @@
   align-items: center;
   justify-content: flex-start;
 }
+.note-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 32px;
+
+}
 .note .add-note{
  
   width: 600px;
@@ -51,6 +59,7 @@ text-align: center;
 }
 .note .panel .row{
   background-color: var(--grey-light-super);
+  position: relative;
 }
 .note .panel button{
   cursor: pointer;
@@ -61,22 +70,34 @@ text-align: center;
   padding: 16px;
   width: 200px;
   max-height: 300px;
-  
+  margin-bottom: 32px;
 }
-.note .card button{
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+
+  button{
   position: relative;
-  transition: all 0.2s ease-in-out;
 }
-.note .card button:hover::before{
-  content: 'kosz';
+  button:hover::before,  .row:hover::before{
+  content: '';
   position: absolute;
   bottom: -20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); 
   color: white;
   background-color: var(--black-light);
   padding: 2px 8px;
+}
+ .add:hover::before{
+  content: 'dodaj';
+}
+ .close:hover::before{
+  content: 'zamknij';
+}
+ .row:hover::before{
+  content: 'tło';
+}
+ .remove-btn:hover:before{
+  content: 'usuń';
+}
+ .archive-btn:hover::before{
+  content: 'archiwizuj';
 }

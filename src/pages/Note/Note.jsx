@@ -1,7 +1,7 @@
-import { BiBulb, BiPalette, BiCommentAdd, BiWindowClose } from 'react-icons/bi'
+import { BiBulb, BiPalette, BiCommentAdd, BiWindowClose, BiArchiveIn } from 'react-icons/bi'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { useState, useEffect } from 'react'
-import { saveStorage} from '../../helpers/localStorage'
+import { saveStorage } from '../../helpers/localStorage'
 import './Note.css'
 
 const Note = () => {
@@ -9,13 +9,11 @@ const Note = () => {
   const [receivedData, setReceivedData] = useState([])
 
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem("notes"));
+    const storedTodos = JSON.parse(localStorage.getItem('notes'))
     if (storedTodos) {
-      setReceivedData(storedTodos);
+      setReceivedData(storedTodos)
     }
-  }, []);
-  
-  
+  }, [])
 
   const handleAddNote = () => {
     setNoteActive(true)
@@ -27,7 +25,7 @@ const Note = () => {
       note: e.target[1].value,
       color: e.target[2].value,
     }
-      setReceivedData([...receivedData, newData])
+    setReceivedData([...receivedData, newData])
     e.target[0].value = ''
     e.target[1].value = ''
     e.target[2].value = '#ffd52e'
@@ -36,15 +34,15 @@ const Note = () => {
   const handleClose = (e) => {
     setNoteActive(false)
   }
-  
+
   const removeNote = (index) => {
-     const newNotes = [...receivedData];
-     
-    const filterNote=newNotes.filter((el,idx)=>idx!==index);
-   
-     setReceivedData(filterNote);
-     localStorage.setItem("notes", JSON.stringify(filterNote));
-  };
+    const newNotes = [...receivedData]
+
+    const filterNote = newNotes.filter((el, idx) => idx !== index)
+
+    setReceivedData(filterNote)
+    localStorage.setItem('notes', JSON.stringify(filterNote))
+  }
 
   return (
     <div className='note'>
@@ -77,7 +75,7 @@ const Note = () => {
                 <BiPalette size={40} />
               </label>
             </div>
-            <button type='submit'>
+            <button type='submit' className='add'>
               <BiCommentAdd size={40} />
             </button>
             <button
@@ -91,29 +89,43 @@ const Note = () => {
           </div>
         )}
       </form>
-      {receivedData.length > 0 ? (
-        receivedData.map((el, index) => {
-          return (
-            <div
-              className='card'
-              key={index}
-              style={{ background: el.color }}
-            >
-              <h3>{el.title}</h3>
-              <p>{el.note}</p>
-              <button onClick={()=>removeNote(index)}><RiDeleteBinLine size={30} color='red'/></button>
-            </div>
-          )
-        })
-      ) : (
-        <div className='info-note'>
-          <BiBulb
-            size={120}
-            className='bulb-note'
-          />
-          <h3>Tutaj pojawią się Twoje notatki</h3>
-        </div>
-      )}
+      <div className='note-wrapper'>
+        {receivedData.length > 0 ? (
+          receivedData.map((el, index) => {
+            return (
+              <div
+                className='card'
+                key={index}
+                style={{ background: el.color }}
+              >
+                <h3>{el.title}</h3>
+                <p>{el.note}</p>
+                <button onClick={() => removeNote(index)} className='remove-btn'>
+                  <RiDeleteBinLine
+                    size={30}
+                    color='red'
+                    
+                  />
+                </button>
+                <button onClick={() => removeNote(index)} className='archive-btn'>
+                  <BiArchiveIn
+                    size={30}
+                    color='green'
+                  />
+                </button>
+              </div>
+            )
+          })
+        ) : (
+          <div className='info-note'>
+            <BiBulb
+              size={120}
+              className='bulb-note'
+            />
+            <h3>Tutaj pojawią się Twoje notatki</h3>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
