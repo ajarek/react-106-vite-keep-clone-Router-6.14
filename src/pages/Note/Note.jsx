@@ -57,7 +57,10 @@ const Note = () => {
   const archiveNote = (index) => {
     const newNotes = [...receivedData]
     const archiveNote=newNotes.find((el,ind)=>ind===index)
+    const filterNote = newNotes.filter((el, idx) => idx !== index)
     saveStorage(archiveNote, 'archive')
+    setReceivedData(filterNote)
+    saveStorageSingle(filterNote, 'notes')
   }
 
   return (
