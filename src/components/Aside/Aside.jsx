@@ -33,7 +33,7 @@ const Aside = () => {
         </Link>
         <Link
           className='aside-link'
-          to={'/'}
+          to={'/kosz'}
         >
          <RiDeleteBinLine className='icons' size={25}/>Kosz
         </Link>

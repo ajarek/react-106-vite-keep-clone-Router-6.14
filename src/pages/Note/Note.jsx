@@ -49,7 +49,9 @@ const Note = () => {
 
   const removeNote = (index) => {
     const newNotes = [...receivedData]
+    const deletedNote=newNotes.find((el,ind)=>ind===index)
     const filterNote = newNotes.filter((el, idx) => idx !== index)
+    saveStorage(deletedNote, 'basket')
     setReceivedData(filterNote)
     saveStorageSingle(filterNote, 'notes')
   }

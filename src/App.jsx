@@ -5,6 +5,7 @@ export const AppContext = createContext()
 import Main from './layouts/Main/Main'
 import Note from './pages/Note/Note'
 import Archive from './pages/Archive/Archive'
+import Wastebasket from './pages/Wastebasket/Wastebasket'
 import Error from './pages/Error/Error'
 
 const router = createBrowserRouter([
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
       {
         path:'/archiwum',
         element: <Archive/>,
+        errorElement: <Error />,
+      },
+      {
+        path:'/kosz',
+        element: <Wastebasket/>,
         errorElement: <Error />,
       },
 

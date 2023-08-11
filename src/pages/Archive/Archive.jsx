@@ -22,7 +22,9 @@ const Archive = () => {
 
   const removeArchive = (index) => {
     const newArchives = [...archiveData]
+    const deletedNote=newArchives.find((el,ind)=>ind===index)
     const filterArchive = newArchives.filter((el, idx) => idx !== index)
+    saveStorage(deletedNote, 'basket')
     setArchiveData(filterArchive)
     saveStorageSingle(filterArchive, 'archive')
   }
