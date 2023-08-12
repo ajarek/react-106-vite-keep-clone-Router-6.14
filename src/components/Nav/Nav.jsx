@@ -1,12 +1,13 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Hamburger from 'hamburger-react'
-
+import { React, useState, useContext, useEffect } from 'react'
+import { AppContext } from '../../App'
 import './Nav.css'
 
 const Nav = () => {
-  const [isOpen, setOpen] = useState(false)
+  
 
+  const { isOpen, setOpen } = useContext(AppContext)
   return (
     <nav className='nav'>
       <Link

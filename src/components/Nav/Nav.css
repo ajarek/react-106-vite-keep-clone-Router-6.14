@@ -65,13 +65,13 @@
   z-index: 2;
 }
 
-@media (min-width: 1110px) {
+@media (min-width: 935px) {
   .hamburger {
     display: none;
   }
 }
 
-@media (max-width: 1110px) {
+/* @media (max-width: 1110px) {
   .nav .wrapper {
     flex-direction: column;
     justify-content: space-evenly;
@@ -147,4 +147,4 @@
   .nav .link-logo h1 {
     width: 200px;
   }
-}
+} */

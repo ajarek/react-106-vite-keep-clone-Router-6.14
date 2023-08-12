@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom'
 import { BiBulb, BiBell, BiPencil, BiArchiveIn } from 'react-icons/bi'
 import { RiDeleteBinLine } from 'react-icons/ri'
+import { React, useState, useContext, useEffect } from 'react'
+import { AppContext } from '../../App'
 import './Aside.css'
 
 const Aside = () => {
+  const { isOpen, setOpen } = useContext(AppContext)
   return (
-    <nav className='aside'>
+    <nav className={!isOpen ? 'aside' : 'aside aside-none'}>
       <ul className='wrapper'>
         <Link
           className='aside-link'

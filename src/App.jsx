@@ -35,9 +35,10 @@ const router = createBrowserRouter([
   },
 ])
 function App() {
+  const [isOpen, setOpen] = useState(false)
   return (
     <div className='App'>
-      <AppContext.Provider value={{}}>
+      <AppContext.Provider value={{isOpen, setOpen}}>
         <RouterProvider router={router} />
       </AppContext.Provider>
     </div>
