@@ -1,6 +1,6 @@
 .wastebasket{
   width: 100%;
-  height: 100vh;
+  min-height: 100vh ;
   padding: 70px 0 40px 300px;
   position: relative;
   display: flex;
@@ -60,4 +60,12 @@ text-align: center;
 }
 .wastebasket .wastebasket-btn:hover::before{
   content: 'przywróć';
+}
+@media (max-width: 935px) {
+  .wastebasket{
+     padding: 70px 10px 40px 10px;
+  }
+  .wastebasket .info-wastebasket{
+    transform: translate(-50%,-50%); 
+    }
 }
