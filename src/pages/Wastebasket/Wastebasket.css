@@ -1,6 +1,6 @@
-.wastebasket{
+.wastebasket {
   width: 100%;
-  min-height: 100vh ;
+  min-height: 100vh;
   padding: 70px 0 40px 300px;
   position: relative;
   display: flex;
@@ -8,7 +8,8 @@
   align-items: center;
   justify-content: flex-start;
 }
-.wastebasket-wrapper{
+
+.wastebasket-wrapper {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -18,54 +19,60 @@
 
 
 
-.wastebasket .info-wastebasket{
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(calc(-50% +280px),calc(-50% -60px));
-text-align: center;
+.wastebasket .info-wastebasket {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50% +280px), calc(-50% -60px));
+  text-align: center;
 }
-.wastebasket .info-wastebasket h3{
+
+.wastebasket .info-wastebasket h3 {
   font-weight: 400;
   color: var(--black-light);
 }
-.wastebasket .info-wastebasket .wastebasket-in{
+
+.wastebasket .info-wastebasket .wastebasket-in {
   color: var(--grey-light);
 }
 
-.wastebasket .card{
+.wastebasket .card {
   padding: 16px;
   width: 200px;
   max-height: 300px;
   margin-bottom: 32px;
 }
 
-.wastebasket button{
+.wastebasket button {
   position: relative;
   cursor: pointer;
 }
-.wastebasket button:hover::before{
+
+.wastebasket button:hover::before {
   content: '';
   position: absolute;
   bottom: -20px;
   left: 50%;
-  transform: translateX(-50%); 
+  transform: translateX(-50%);
   color: white;
   background-color: var(--black-light);
   padding: 2px 8px;
 }
- 
-.wastebasket .remove-btn:hover:before{
+
+.wastebasket .remove-btn:hover:before {
   content: 'usuń';
 }
-.wastebasket .wastebasket-btn:hover::before{
+
+.wastebasket .wastebasket-btn:hover::before {
   content: 'przywróć';
 }
+
 @media (max-width: 935px) {
-  .wastebasket{
-     padding: 70px 10px 40px 10px;
+  .wastebasket {
+    padding: 70px 10px 40px 10px;
   }
-  .wastebasket .info-wastebasket{
-    transform: translate(-50%,-50%); 
-    }
+
+  .wastebasket .info-wastebasket {
+    transform: translate(-50%, -50%);
+  }
 }

@@ -1,4 +1,4 @@
-.note{
+.note {
   width: 100%;
   min-height: 100vh;
   padding: 70px 0 40px 300px;
@@ -8,7 +8,8 @@
   align-items: center;
   justify-content: flex-start;
 }
-.note-wrapper{
+
+.note-wrapper {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -16,11 +17,12 @@
   padding: 32px;
 
 }
-.note .add-note{
+
+.note .add-note {
   width: 100%;
   max-width: 600px;
   min-height: 46px;
-  box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+  box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.5);
   margin-top: 64px;
   display: flex;
   flex-direction: column;
@@ -29,88 +31,108 @@
   cursor: pointer;
 
 }
-.note .add-note input{
+
+.note .add-note input {
   height: 44px;
   padding: 0 16px;
   border: none;
   outline: none;
 }
-.note .add-note input[type='color'],.note .add-note label{
- background-color: transparent;
- cursor: pointer;
+
+.note .add-note input[type='color'],
+.note .add-note label {
+  background-color: transparent;
+  cursor: pointer;
 }
-.note .info-note{
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(calc(-50% +280px),calc(-50% -60px));
-text-align: center;
+
+.note .info-note {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50% +280px), calc(-50% -60px));
+  text-align: center;
 }
-.note .info-note h3{
+
+.note .info-note h3 {
   font-weight: 400;
   color: var(--black-light);
 }
-.note .info-note .bulb-note{
+
+.note .info-note .bulb-note {
   color: var(--grey-light);
 }
-.note .panel{
+
+.note .panel {
   display: flex;
   justify-content: space-evenly;
   padding: 5px;
 }
-.note .panel .row{
+
+.note .panel .row {
   background-color: var(--grey-light-super);
   position: relative;
 }
-.note .panel button{
+
+.note .panel button {
   cursor: pointer;
   background-color: var(--grey-light-super);
   border: none;
 }
-.note .card{
+
+.note .card {
   padding: 16px;
   width: 200px;
   max-height: 300px;
   margin-bottom: 32px;
 }
 
-  button{
+button {
   position: relative;
   cursor: pointer;
 }
-  button:hover::before,  .row:hover::before{
+
+button:hover::before,
+.row:hover::before {
   content: '';
   position: absolute;
   bottom: -20px;
   left: 50%;
-  transform: translateX(-50%); 
+  transform: translateX(-50%);
   color: white;
   background-color: var(--black-light);
   padding: 2px 8px;
 }
- .add:hover::before{
+
+.add:hover::before {
   content: 'dodaj';
 }
- .close:hover::before{
+
+.close:hover::before {
   content: 'zamknij';
 }
- .row:hover::before{
+
+.row:hover::before {
   content: 'tło';
 }
- .remove-btn:hover:before{
+
+.remove-btn:hover:before {
   content: 'usuń';
 }
- .archive-btn:hover::before{
+
+.archive-btn:hover::before {
   content: 'archiwizuj';
 }
+
 @media (max-width: 935px) {
-  .note{  
- padding: 70px 10px 40px 10px;
+  .note {
+    padding: 70px 10px 40px 10px;
   }
-  .note .add-note{
+
+  .note .add-note {
     margin-top: 32px;
   }
-  .note .info-note{
-    transform: translate(-50%,0%); 
-    }
+
+  .note .info-note {
+    transform: translate(-50%, 0%);
+  }
 }

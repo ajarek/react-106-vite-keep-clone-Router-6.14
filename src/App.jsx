@@ -16,21 +16,19 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Note/>,
+        element: <Note />,
         errorElement: <Error />,
       },
       {
-        path:'/archiwum',
-        element: <Archive/>,
+        path: '/archiwum',
+        element: <Archive />,
         errorElement: <Error />,
       },
       {
-        path:'/kosz',
-        element: <Wastebasket/>,
+        path: '/kosz',
+        element: <Wastebasket />,
         errorElement: <Error />,
       },
-
-      
     ],
   },
 ])
@@ -38,7 +36,7 @@ function App() {
   const [isOpen, setOpen] = useState(false)
   return (
     <div className='App'>
-      <AppContext.Provider value={{isOpen, setOpen}}>
+      <AppContext.Provider value={{ isOpen, setOpen }}>
         <RouterProvider router={router} />
       </AppContext.Provider>
     </div>

@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-import {saveStorage, fetchStorage, saveStorageSingle} from '../../helpers/localStorage'
 import {
-  BiBulb,
-  BiPalette,
-  BiCommentAdd,
-  BiWindowClose,
-  BiArchiveIn,
-} from 'react-icons/bi'
+  saveStorage,
+  fetchStorage,
+  saveStorageSingle,
+} from '../../helpers/localStorage'
+import { BiBulb, BiArchiveIn } from 'react-icons/bi'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import './Archive.css'
 
@@ -22,16 +20,16 @@ const Archive = () => {
 
   const removeArchive = (index) => {
     const newArchives = [...archiveData]
-    const deletedNote=newArchives.find((el,ind)=>ind===index)
+    const deletedNote = newArchives.find((el, ind) => ind === index)
     const filterArchive = newArchives.filter((el, idx) => idx !== index)
     saveStorage(deletedNote, 'basket')
     setArchiveData(filterArchive)
     saveStorageSingle(filterArchive, 'archive')
   }
-  
+
   const restoreNote = (index) => {
     const newArchives = [...archiveData]
-    const restoreNote=newArchives.find((el,ind)=>ind===index)
+    const restoreNote = newArchives.find((el, ind) => ind === index)
     const filterNote = newArchives.filter((el, idx) => idx !== index)
     saveStorage(restoreNote, 'notes')
     setArchiveData(filterNote)
@@ -41,7 +39,7 @@ const Archive = () => {
   return (
     <div className='archive'>
       <div className='archive-wrapper'>
-     {archiveData.length > 0 ? (
+        {archiveData.length > 0 ? (
           archiveData.map((el, index) => {
             return (
               <div
@@ -64,7 +62,7 @@ const Archive = () => {
                   onClick={() => restoreNote(index)}
                   className='archive-btn'
                 >
-                  <BiArchiveIn
+                  <BiBulb
                     size={30}
                     color='green'
                   />
@@ -82,7 +80,7 @@ const Archive = () => {
           </div>
         )}
       </div>
-      </div>
+    </div>
   )
 }
 

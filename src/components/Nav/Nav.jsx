@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom'
 import Hamburger from 'hamburger-react'
-import { React, useState, useContext, useEffect } from 'react'
+import { React, useContext } from 'react'
 import { AppContext } from '../../App'
 import './Nav.css'
 
 const Nav = () => {
-  
-
   const { isOpen, setOpen } = useContext(AppContext)
   return (
     <nav className='nav'>
@@ -15,7 +13,10 @@ const Nav = () => {
         to={'/'}
       >
         <div className='img'>
-         <img src="/keep.png" alt="logo" />
+          <img
+            src='/keep.png'
+            alt='logo'
+          />
         </div>
         <h1>Keep</h1>
       </Link>
@@ -27,7 +28,6 @@ const Nav = () => {
         >
           Home
         </Link> */}
-        
       </ul>
       <div className='hamburger'>
         <Hamburger

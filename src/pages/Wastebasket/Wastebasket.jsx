@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-import {saveStorage, fetchStorage, saveStorageSingle} from '../../helpers/localStorage'
 import {
-  BiBulb,
-  BiPalette,
-  BiCommentAdd,
-  BiWindowClose,
-  BiArchiveIn,
-} from 'react-icons/bi'
+  saveStorage,
+  fetchStorage,
+  saveStorageSingle,
+} from '../../helpers/localStorage'
+import { BiBulb } from 'react-icons/bi'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import './Wastebasket.css'
 
@@ -19,10 +17,10 @@ const Wastebasket = () => {
       setGarbageData(storedGarbage)
     }
   }, [])
-  
+
   const restoreGarbage = (index) => {
     const newGarbage = [...garbageData]
-    const restoreGarbage=newGarbage.find((el,ind)=>ind===index)
+    const restoreGarbage = newGarbage.find((el, ind) => ind === index)
     const filterGarbage = newGarbage.filter((el, idx) => idx !== index)
     saveStorage(restoreGarbage, 'notes')
     setGarbageData(filterGarbage)
@@ -30,7 +28,7 @@ const Wastebasket = () => {
   }
 
   const removeGarbage = (index) => {
-    const newGarbage = [...garbageData] 
+    const newGarbage = [...garbageData]
     const filterArchive = newGarbage.filter((el, idx) => idx !== index)
     setGarbageData(filterArchive)
     saveStorageSingle(filterArchive, 'basket')
@@ -38,8 +36,8 @@ const Wastebasket = () => {
 
   return (
     <div className='wastebasket'>
-        <div className='wastebasket-wrapper'>
-     {garbageData.length > 0 ? (
+      <div className='wastebasket-wrapper'>
+        {garbageData.length > 0 ? (
           garbageData.map((el, index) => {
             return (
               <div

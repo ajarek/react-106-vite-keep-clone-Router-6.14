@@ -49,7 +49,7 @@ const Note = () => {
 
   const removeNote = (index) => {
     const newNotes = [...receivedData]
-    const deletedNote=newNotes.find((el,ind)=>ind===index)
+    const deletedNote = newNotes.find((el, ind) => ind === index)
     const filterNote = newNotes.filter((el, idx) => idx !== index)
     saveStorage(deletedNote, 'basket')
     setReceivedData(filterNote)
@@ -58,7 +58,7 @@ const Note = () => {
 
   const archiveNote = (index) => {
     const newNotes = [...receivedData]
-    const archiveNote=newNotes.find((el,ind)=>ind===index)
+    const archiveNote = newNotes.find((el, ind) => ind === index)
     const filterNote = newNotes.filter((el, idx) => idx !== index)
     saveStorage(archiveNote, 'archive')
     setReceivedData(filterNote)
